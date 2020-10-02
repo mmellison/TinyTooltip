@@ -1,6 +1,6 @@
-## Interface: 80200
-## Title: TinyTooltip
-## Notes: TinyTooltip
+## Interface: 11305
+## Title: TinyTooltip (|cFF00adc5Dragonized|r)
+## Notes: A Configurable Tooltip Replacement
 ## Author: M
 ## Version: 8.2.1
 ## SavedVariables: BigTipDB
