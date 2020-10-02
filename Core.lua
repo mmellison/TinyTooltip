@@ -71,6 +71,28 @@ addon.bgs = {
     marble  = "Interface\\FrameGeneral\\UI-Background-Marble",
 }
 
+addon.anchorMirrors = {
+    vertical = {
+        TOP = "BOTTOM",
+        TOPLEFT = "TOPRIGHT",
+        TOPRIGHT = "TOPLEFT",
+        BOTTOM = "TOP",
+        BOTTOMLEFT = "BOTTOMRIGHT",
+        BOTTOMRIGHT = "BOTTOMLEFT",
+        LEFT = "RIGHT",
+        RIGHT = "LEFT",
+        CENTER = "CENTER",
+    },
+    corner = {
+        TOPLEFT = "BOTTOMRIGHT",
+        TOPRIGHT = "BOTTOMLEFT",
+        BOTTOMLEFT = "TOPRIGHT",
+        BOTTOMRIGHT = "TOPLEFT",
+    }
+}
+
+addon.auras = {}
+
 -- 配置 (elements鍵不合併)
 function addon:MergeVariable(src, dst)
     dst.version = src.version
@@ -427,6 +449,11 @@ function addon:GetUnitData(unit, elements, raw)
     return data
 end
 
+function addon:HideAuras()
+    for i = 1, #addon.auras do
+        addon.auras[i]:Hide();
+    end
+end
 
 addon.filterfunc, addon.colorfunc = {}, {}
 

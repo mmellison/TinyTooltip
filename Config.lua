@@ -31,6 +31,16 @@ addon.db = {
         bodyFontFlag      = "default",
         SavedVariablesPerCharacter = false,
     },
+    auras = {
+        showBuffs         = true,
+        showDebuffs       = true,
+        size              = 16,
+        maxRows           = 4,
+        position          = "bottom",
+        selfOnly          = false,
+        showCooldown      = true,
+        showCooldownTimer = true,
+    },
     unit = {
         player = {
             coloredBorder = "class",                --玩家邊框顔色 default|class|level|reaction|itemQuality|selection|faction|HEX

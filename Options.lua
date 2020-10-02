@@ -525,6 +525,16 @@ local options = {
         { keystring = "general.alwaysShowIdInfo",   type = "checkbox" },
         { keystring = "general.SavedVariablesPerCharacter",   type = "checkbox" },
     },
+    auras = {
+        { keystring = "auras.showBuffs",            type = "checkbox" },
+        { keystring = "auras.showDebuffs",          type = "checkbox" },
+        { keystring = "auras.size",                 type = "slider", min = 1, max = 50, step = 1 },
+        { keystring = "auras.maxRows",              type = "slider", min = 1, max = 8, step = 1 },
+        { keystring = "auras.position",             type = "dropdown", dropdata = {"bottom", "top"}},
+        { keystring = "auras.selfOnly",             type = "checkbox" },
+        { keystring = "auras.showCooldown",         type = "checkbox" },
+        { keystring = "auras.showCooldownTimer",    type = "checkbox" },
+    },
     pc = {
         { keystring = "unit.player.showTarget",           type = "checkbox" },
         { keystring = "unit.player.showTargetBy",         type = "checkbox" },
@@ -615,6 +625,16 @@ frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 frame.title:SetPoint("TOPLEFT", 18, -16)
 frame.title:SetText(format("%s |cff33eeff%s|r", addonName, "General"))
 frame.name = addonName
+
+local frameAuras = CreateFrame("Frame", nil, UIParent)
+frameAuras.anchor = CreateFrame("Frame", nil, frameAuras)
+frameAuras.anchor:SetPoint("TOPLEFT", 32, -13)
+frameAuras.anchor:SetSize(InterfaceOptionsFramePanelContainer:GetWidth()-64, 1)
+frameAuras.title = frameAuras:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+frameAuras.title:SetPoint("TOPLEFT", 18, -16)
+frameAuras.title:SetText(format("%s |cff33eeff%s|r", addonName, "Aura Options"))
+frameAuras.parent = addonName
+frameAuras.name = " - Auras"
 
 local framePC = CreateFrame("Frame", nil, UIParent)
 framePC.anchor = CreateFrame("Frame", nil, framePC)
@@ -723,6 +743,7 @@ end
 
 LibEvent:attachEvent("VARIABLES_LOADED", function()
     InitOptions(options.general, frame, 32)
+    InitOptions(options.auras, frameAuras, 32)
     InitOptions(options.pc, framePC, 29)
     InitOptions(options.npc, frameNPC, 27)
     InitOptions(options.statusbar, frameStatusbar, 36)
@@ -732,6 +753,7 @@ LibEvent:attachEvent("VARIABLES_LOADED", function()
 end)
 
 InterfaceOptions_AddCategory(frame)
+InterfaceOptions_AddCategory(frameAuras)
 InterfaceOptions_AddCategory(framePCScrollFrame)
 InterfaceOptions_AddCategory(frameNPC)
 InterfaceOptions_AddCategory(frameStatusbar)
